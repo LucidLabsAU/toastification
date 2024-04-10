@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:toastification/src/widget/built_in/built_in.dart';
 import 'package:toastification/src/widget/built_in/filled/filled_style.dart';
 import 'package:toastification/src/widget/built_in/widget/close_button.dart';
@@ -120,10 +121,14 @@ class FilledToastWidget extends StatelessWidget {
       child: Row(
         children: [
           icon ??
-              Icon(
+              SvgPicture.string(
                 defaultStyle.icon(context),
-                size: 24,
-                color: iconColor,
+                height: 24,
+                width: 24,
+                colorFilter: ColorFilter.mode(
+                  iconColor,
+                  BlendMode.srcIn,
+                ),
               ),
           const SizedBox(width: 12),
           Expanded(
